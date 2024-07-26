@@ -1,5 +1,6 @@
 import argparse
 import logging
+import platform
 import sys
 from collections.abc import Callable
 from pathlib import Path
@@ -8,12 +9,16 @@ from typing import Any
 import pytesseract
 from PIL import Image
 
-# Set up logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-# Set path to the Tesseract-OCR executable
-# Windows installer -> `winget install --id UB-Mannheim.TesseractOCR`
-TESSERACT_CMD = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+# Path to the Tesseract-OCR executable based on OS
+if platform.system() == "Windows":
+    TESSERACT_CMD = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+elif platform.system() == "Linux":
+    TESSERACT_CMD = r"/usr/bin/tesseract"
+else:
+    TESSERACT_CMD = "tesseract"  # Fallback to default command
+
 pytesseract.pytesseract.tesseract_cmd = TESSERACT_CMD
 
 

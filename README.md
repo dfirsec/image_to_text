@@ -6,7 +6,9 @@ Python script that extracts text from images using Tesseract-OCR.
 
 1. **Python 3.10 or higher**
 2. **Tesseract OCR**: You can install Tesseract-OCR from [here](https://github.com/tesseract-ocr/tesseract).
-   - Windows users: Use winget: `winget install --id UB-Mannheim.TesseractOCR`
+
+    - **Windows**: `winget install --id UB-Mannheim.TesseractOCR`
+    - **Linux**: `sudo apt-get install tesseract-ocr`
 
 ## Setup
 
@@ -29,11 +31,10 @@ Python script that extracts text from images using Tesseract-OCR.
     poetry install
     ```
 
-4. **Set the Tesseract OCR executable path** (Windows users):
+4. **Set the Tesseract OCR executable path**: The script automatically sets the path to the Tesseract executable based on the operating system.
 
-    ```python
-    TESSERACT_CMD = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-    ```
+    - For Windows: `C:\Program Files\Tesseract-OCR\tesseract.exe`.
+    - For Linux: `/usr/bin/tesseract`.
 
 ## Usage
 
