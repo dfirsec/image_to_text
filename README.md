@@ -75,4 +75,4 @@ python image_to_text.py <IMAGE_FILE_PATH>
 
 ## License
 
-This program is licensed under the MIT License.
+Licensed under the MIT License.
