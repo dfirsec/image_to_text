@@ -6,6 +6,7 @@ from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
+import mdformat
 import pytesseract
 from PIL import Image
 
@@ -64,8 +65,10 @@ def process_image(image_path: Path, output_path: Path | None = None, to_pdf: boo
         convert_image_to_pdf(image_path, pdf_path)
     else:
         text = get_text_from_image(image_path)
-        text_path = output_path or Path("recognized.txt")
+        text_path = output_path or Path("recognized.md")
         text_path.write_text(text, encoding="utf-8")
+        # Format the Markdown file
+        mdformat.file(text_path)
         logging.info(f"Text extracted and saved to: {text_path}")
 
 
